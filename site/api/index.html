@@ -949,7 +949,8 @@ constructor.</p>
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">127</span>
+<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1062,6 +1063,7 @@ constructor.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">context_box</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;context_box&#39;</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">}</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_warned_about_manual_override</span> <span class="o">=</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>
                   </details>
 
@@ -1328,8 +1330,7 @@ relative to the title block in pixels. Defaults to 0.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">187</span>
-<span class="normal">188</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">188</span>
 <span class="normal">189</span>
 <span class="normal">190</span>
 <span class="normal">191</span>
@@ -1396,7 +1397,8 @@ relative to the title block in pixels. Defaults to 0.</p>
 <span class="normal">252</span>
 <span class="normal">253</span>
 <span class="normal">254</span>
-<span class="normal">255</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_title</span><span class="p">(</span>
+<span class="normal">255</span>
+<span class="normal">256</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_title</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">title</span><span class="p">,</span>
         <span class="n">subtitle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1475,7 +1477,7 @@ relative to the title block in pixels. Defaults to 0.</p>
 
 
 <h3 id="pynarrative.Story.add_context" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">add_context</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text_align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;middle&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">font_style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;CONTEXT&#39;</span><span class="p">,</span> <span class="n">title_dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">img_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">img_width</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">x_img_offset</span><span class="o">=-</span><span class="mi">40</span><span class="p">,</span> <span class="n">y_img_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">add_context</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text_align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;middle&#39;</span><span class="p">,</span> <span class="n">width_multiplier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">height_multiplier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">font_style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;CONTEXT&#39;</span><span class="p">,</span> <span class="n">title_dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">img_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">img_width</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">x_img_offset</span><span class="o">=-</span><span class="mi">40</span><span class="p">,</span> <span class="n">y_img_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
 
 </h3>
 
@@ -1562,6 +1564,42 @@ Defaults to "middle".</p>
             </td>
             <td>
                   <code>&#39;middle&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>width_multiplier</code>
+            </td>
+            <td>
+                  <code>(<span title="int">int</span>, <span title="float">float</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Box width multiplier (suggested values: from 0.1 to 4).
+If omitted or None, uses the value from the template (if used),
+falling back to the standard value (1.7)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>height_multiplier</code>
+            </td>
+            <td>
+                  <code>(<span title="int">int</span>, <span title="float">float</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Box height multiplier (suggested values: from 0.1 to 0.75).
+If omitted or None, uses the value from the template (if used),
+falling back to the standard value (0.33)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -1747,6 +1785,26 @@ Defaults to 0.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>width_multiplier</code> is not int or float.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>height_multiplier</code> is not int or float.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                   <code><span title="ValueError">ValueError</span></code>
             </td>
             <td>
@@ -1821,9 +1879,7 @@ Defaults to 0.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">259</span>
 <span class="normal">260</span>
 <span class="normal">261</span>
 <span class="normal">262</span>
@@ -1926,12 +1982,32 @@ Defaults to 0.</p>
 <span class="normal">359</span>
 <span class="normal">360</span>
 <span class="normal">361</span>
-<span class="normal">362</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_context</span><span class="p">(</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_context</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">text</span><span class="p">,</span>
         <span class="n">text_align</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
         <span class="n">position</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
         <span class="n">align</span> <span class="o">=</span> <span class="s2">&quot;middle&quot;</span><span class="p">,</span>
+        <span class="n">width_multiplier</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">height_multiplier</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">font_weight</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
         <span class="n">font_style</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;CONTEXT&quot;</span><span class="p">,</span>
@@ -1952,6 +2028,12 @@ Defaults to 0.</p>
 <span class="sd">        align (str, optional): Vertical alignment relative to the chart when `position` is</span>
 <span class="sd">            `&#39;left&#39;` or `&#39;right&#39;`. Must be one of `&#39;top&#39;`, `&#39;middle&#39;`, or `&#39;bottom&#39;`.</span>
 <span class="sd">            Defaults to &quot;middle&quot;.</span>
+<span class="sd">        width_multiplier (int, float, optional): Box width multiplier (suggested values: from 0.1 to 4).</span>
+<span class="sd">            If omitted or None, uses the value from the template (if used),</span>
+<span class="sd">            falling back to the standard value (1.7)</span>
+<span class="sd">        height_multiplier (int, float, optional): Box height multiplier (suggested values: from 0.1 to 0.75).</span>
+<span class="sd">            If omitted or None, uses the value from the template (if used),</span>
+<span class="sd">            falling back to the standard value (0.33)</span>
 <span class="sd">        font_weight (str, optional): Font weight for the context text.</span>
 <span class="sd">            Must be one of `&#39;normal&#39;` or `&#39;bold&#39;`. Defaults to &quot;normal&quot;.</span>
 <span class="sd">        font_style (str, optional): Font style for the context text.</span>
@@ -1974,6 +2056,8 @@ Defaults to 0.</p>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        TypeError: If `text` or `title` is not a string.</span>
+<span class="sd">        TypeError: If `width_multiplier` is not int or float.</span>
+<span class="sd">        TypeError: If `height_multiplier` is not int or float.</span>
 <span class="sd">        ValueError: If `text_align` is not one of `&#39;left&#39;`, `&#39;center&#39;`, or `&#39;right&#39;`.</span>
 <span class="sd">        ValueError: If `position` is not one of `&#39;left&#39;`, `&#39;right&#39;`, `&#39;top&#39;`, or `&#39;bottom&#39;`.</span>
 <span class="sd">        ValueError: If `align` is specified with `position` set to `&#39;top&#39;` or `&#39;bottom&#39;`.</span>
@@ -1997,6 +2081,10 @@ Defaults to 0.</p>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vertical alignment (&#39;align&#39;) cannot be customized when &#39;position&#39; is &#39;top&#39; or &#39;bottom&#39;&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">align</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;middle&quot;</span><span class="p">,</span> <span class="s2">&quot;bottom&quot;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid &#39;align&#39; value: &#39;</span><span class="si">{</span><span class="n">align</span><span class="si">}</span><span class="s2">&#39;. Must be one of: &#39;top&#39;, &#39;middle&#39;, &#39;bottom&#39;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">width_multiplier</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">and</span> <span class="n">width_multiplier</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;width_multiplier&#39; must be int or float, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">width_multiplier</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">height_multiplier</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">and</span> <span class="n">height_multiplier</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;height_multiplier&#39; must be int or float, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">height_multiplier</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">font_weight</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span> <span class="s2">&quot;bold&quot;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid &#39;font_weight&#39; value: &#39;</span><span class="si">{</span><span class="n">font_weight</span><span class="si">}</span><span class="s2">&#39;. Must be one of: &#39;normal&#39;, &#39;bold&#39;&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">font_style</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span> <span class="s2">&quot;italic&quot;</span><span class="p">]:</span>
@@ -2006,13 +2094,15 @@ Defaults to 0.</p>
 
     <span class="n">font_size_px</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">em_to_px</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">font_sizes</span><span class="p">[</span><span class="s1">&#39;context&#39;</span><span class="p">])</span> 
 
-    <span class="n">box_width</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context_box_size</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_width_multipliers</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">block_type_</span> <span class="o">=</span> <span class="s2">&quot;context&quot;</span><span class="p">,</span> <span class="n">width_multiplier</span> <span class="o">=</span> <span class="n">width_multiplier</span><span class="p">,</span> <span class="n">height_multiplier</span> <span class="o">=</span> <span class="n">height_multiplier</span><span class="p">)</span>
+
+    <span class="n">box_width</span><span class="p">,</span> <span class="n">box_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context_box_size</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
     <span class="n">wrapped_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrap_text_for_width</span><span class="p">(</span>
         <span class="n">text</span><span class="p">,</span>
         <span class="n">box_width</span><span class="o">=</span><span class="n">box_width</span><span class="p">,</span>
         <span class="n">font_size_px</span><span class="o">=</span><span class="n">font_size_px</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">box_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text_block_height</span><span class="p">(</span><span class="n">wrapped_text</span><span class="p">,</span> <span class="n">font_size_px</span><span class="p">,</span> <span class="n">block_type</span> <span class="o">=</span> <span class="s2">&quot;context&quot;</span><span class="p">)</span>
+
     <span class="bp">self</span><span class="o">.</span><span class="n">story_layers</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
         <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;context&#39;</span><span class="p">,</span> 
         <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">wrapped_text</span><span class="p">,</span>
@@ -2042,7 +2132,7 @@ Defaults to 0.</p>
 
 
 <h3 id="pynarrative.Story.add_next_steps" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">add_next_steps</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">text_align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;NEXT STEPS&#39;</span><span class="p">,</span> <span class="n">title_dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">title_dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">img_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">img_width</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">x_img_offset</span><span class="o">=-</span><span class="mi">50</span><span class="p">,</span> <span class="n">y_img_offset</span><span class="o">=-</span><span class="mf">22.5</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">add_next_steps</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">text_align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">width_multiplier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">height_multiplier</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;NEXT STEPS&#39;</span><span class="p">,</span> <span class="n">title_dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">title_dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">img_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">img_width</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">x_img_offset</span><span class="o">=-</span><span class="mi">50</span><span class="p">,</span> <span class="n">y_img_offset</span><span class="o">=-</span><span class="mf">22.5</span><span class="p">)</span></code>
 
 </h3>
 
@@ -2112,6 +2202,42 @@ Must be one of <code>'bottom'</code>, <code>'top'</code>, <code>'left'</code>, o
             </td>
             <td>
                   <code>&#39;bottom&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>width_multiplier</code>
+            </td>
+            <td>
+                  <code>(<span title="int">int</span>, <span title="float">float</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Box width multiplier (suggested values: from 0.1 to 4).
+If omitted or None, uses the value from the template (if used),
+falling back to the standard value (1.7)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>height_multiplier</code>
+            </td>
+            <td>
+                  <code>(<span title="int">int</span>, <span title="float">float</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Box height multiplier (suggested values: from 0.1 to 4).
+If omitted or None, uses the value from the template (if used),
+falling back to the standard value</p>
+              </div>
+            </td>
+            <td>
+                  <code>1</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -2309,6 +2435,26 @@ Defaults to -22.5.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>width_multiplier</code> is not int or float.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>height_multiplier</code> is not int or float.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                   <code><span title="ValueError">ValueError</span></code>
             </td>
             <td>
@@ -2373,25 +2519,7 @@ Defaults to -22.5.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">365</span>
-<span class="normal">366</span>
-<span class="normal">367</span>
-<span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span>
-<span class="normal">377</span>
-<span class="normal">378</span>
-<span class="normal">379</span>
-<span class="normal">380</span>
-<span class="normal">381</span>
-<span class="normal">382</span>
-<span class="normal">383</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">383</span>
 <span class="normal">384</span>
 <span class="normal">385</span>
 <span class="normal">386</span>
@@ -2620,11 +2748,46 @@ Defaults to -22.5.</p>
 <span class="normal">609</span>
 <span class="normal">610</span>
 <span class="normal">611</span>
-<span class="normal">612</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_next_steps</span><span class="p">(</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
+<span class="normal">619</span>
+<span class="normal">620</span>
+<span class="normal">621</span>
+<span class="normal">622</span>
+<span class="normal">623</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span>
+<span class="normal">634</span>
+<span class="normal">635</span>
+<span class="normal">636</span>
+<span class="normal">637</span>
+<span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
+<span class="normal">641</span>
+<span class="normal">642</span>
+<span class="normal">643</span>
+<span class="normal">644</span>
+<span class="normal">645</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_next_steps</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">steps</span><span class="p">,</span>
     <span class="n">text_align</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
     <span class="n">position</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+    <span class="n">width_multiplier</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">height_multiplier</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NEXT STEPS&quot;</span><span class="p">,</span>
     <span class="n">title_dy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="n">title_dx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -2644,6 +2807,12 @@ Defaults to -22.5.</p>
 <span class="sd">            Must be one of `&#39;left&#39;`, `&#39;center&#39;`, or `&#39;right&#39;`. Defaults to &quot;left&quot;.</span>
 <span class="sd">        position (str, optional): Position of the entire element relative to the chart.</span>
 <span class="sd">            Must be one of `&#39;bottom&#39;`, `&#39;top&#39;`, `&#39;left&#39;`, or `&#39;right&#39;`. Defaults to &quot;bottom&quot;.</span>
+<span class="sd">        width_multiplier (int, float, optional): Box width multiplier (suggested values: from 0.1 to 4).</span>
+<span class="sd">            If omitted or None, uses the value from the template (if used),</span>
+<span class="sd">            falling back to the standard value (1.7)</span>
+<span class="sd">        height_multiplier (int, float, optional): Box height multiplier (suggested values: from 0.1 to 4).</span>
+<span class="sd">            If omitted or None, uses the value from the template (if used),</span>
+<span class="sd">            falling back to the standard value</span>
 <span class="sd">        title (str, optional): Main title header displayed above the next steps.</span>
 <span class="sd">            Defaults to &quot;NEXT STEPS&quot;.</span>
 <span class="sd">        title_dy (int | float, optional): Vertical offset in pixels for the title.</span>
@@ -2669,6 +2838,8 @@ Defaults to -22.5.</p>
 <span class="sd">    Raises:</span>
 <span class="sd">        TypeError: If `steps` is not a string or a list of strings.</span>
 <span class="sd">        TypeError: If `img_url` is provided but is neither a string nor a list.</span>
+<span class="sd">        TypeError: If `width_multiplier` is not int or float.</span>
+<span class="sd">        TypeError: If `height_multiplier` is not int or float.</span>
 <span class="sd">        ValueError: If `steps` is empty or contains more than 5 elements.</span>
 <span class="sd">        ValueError: If `position` is not one of `&#39;bottom&#39;`, `&#39;top&#39;`, `&#39;left&#39;`, or `&#39;right&#39;`.</span>
 <span class="sd">        ValueError: If `text_align` is not one of `&#39;left&#39;`, `&#39;center&#39;`, or `&#39;right&#39;`.</span>
@@ -2688,6 +2859,10 @@ Defaults to -22.5.</p>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Maximum number of steps is 5&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">position</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid &#39;position&#39; value: &#39;</span><span class="si">{</span><span class="n">position</span><span class="si">}</span><span class="s2">&#39;. Must be one of: &#39;bottom&#39;, &#39;top&#39;, &#39;left&#39;, &#39;right&#39;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">width_multiplier</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">and</span> <span class="n">width_multiplier</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;width_multiplier&#39; must be int or float, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">width_multiplier</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">height_multiplier</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">and</span> <span class="n">height_multiplier</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;height_multiplier&#39; must be int or float, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">height_multiplier</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">text_align</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid &#39;text_align&#39; value: &#39;</span><span class="si">{</span><span class="n">text_align</span><span class="si">}</span><span class="s2">&#39;. Must be one of: &#39;left&#39;, &#39;center&#39;, &#39;right&#39;&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span> <span class="s2">&quot;vertical&quot;</span><span class="p">]:</span>
@@ -2701,6 +2876,8 @@ Defaults to -22.5.</p>
 
     <span class="k">if</span> <span class="n">img_width</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;img_width&#39; must be a positive number&quot;</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_width_multipliers</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">block_type_</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;nextsteps_</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">width_multiplier</span> <span class="o">=</span> <span class="n">width_multiplier</span><span class="p">,</span> <span class="n">height_multiplier</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="n">font_family</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">font</span>
     <span class="n">font_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">em_to_px</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">font_sizes</span><span class="p">[</span><span class="s2">&quot;nextstep&quot;</span><span class="p">])</span>
@@ -2718,8 +2895,7 @@ Defaults to -22.5.</p>
 
     <span class="c1"># NUOVO</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;horizontal&quot;</span><span class="p">:</span>
-        <span class="n">box_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">layout_width</span> <span class="o">-</span> <span class="n">gap</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">steps</span><span class="p">))</span>
-        <span class="n">box_width</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">box_width</span><span class="p">,</span> <span class="n">min_box</span><span class="p">),</span> <span class="n">max_box</span><span class="p">)</span>
+        <span class="n">box_width</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context_box_size</span><span class="p">(</span><span class="n">position</span><span class="p">)</span> <span class="c1">#Il calcolo della larghezza utilizza lo stesso metodo del box di contesto per questioni di uniformità grafica</span>
         <span class="n">content_width</span> <span class="o">=</span> <span class="p">(</span><span class="n">box_width</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">steps</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">gap</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
         <span class="n">chart_width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">layout_width</span><span class="p">,</span> <span class="n">content_width</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span> <span class="c1">#vertical</span>
@@ -2729,6 +2905,7 @@ Defaults to -22.5.</p>
     <span class="n">box_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="s1">&#39;nextstep_box&#39;</span><span class="p">]</span>
     <span class="n">box_border</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="s1">&#39;nextstep_border&#39;</span><span class="p">]</span>
     <span class="n">text_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="s1">&#39;nextstep_text&#39;</span><span class="p">]</span>
+
 
     <span class="n">wrapped_steps</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">box_heights</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2741,15 +2918,15 @@ Defaults to -22.5.</p>
         <span class="n">wrapped_steps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wrapped</span><span class="p">)</span>
         <span class="n">box_heights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_block_height</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">font_size</span><span class="p">,</span> <span class="n">block_type</span> <span class="o">=</span> <span class="s2">&quot;nextsteps&quot;</span><span class="p">))</span>  <span class="c1">#uniformazione alla gestione dei box di contesto</span>
 
-    <span class="n">uniform_box_height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">box_heights</span><span class="p">)</span> <span class="k">if</span> <span class="n">box_heights</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span><span class="p">[</span><span class="s1">&#39;nextstep_box_height&#39;</span><span class="p">]</span>
+
+    <span class="n">uniform_box_height</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">box_heights</span><span class="p">)</span> <span class="o">*</span> <span class="n">height_multiplier</span><span class="p">)</span> <span class="k">if</span> <span class="n">box_heights</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span><span class="p">[</span><span class="s1">&#39;nextstep_box_height&#39;</span><span class="p">]</span>
     <span class="n">chart_body_height</span> <span class="o">=</span> <span class="n">uniform_box_height</span>
+
 
     <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="n">text_align</span> <span class="o">=</span> <span class="n">text_align</span> <span class="k">if</span> <span class="n">text_align</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span><span class="p">[</span><span class="s1">&#39;nextstep_text_align&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;horizontal&quot;</span><span class="p">:</span>
-        <span class="n">uniform_box_height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">box_heights</span><span class="p">)</span> <span class="k">if</span> <span class="n">box_heights</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span><span class="p">[</span><span class="s1">&#39;nextstep_box_height&#39;</span><span class="p">]</span>
-        <span class="n">chart_body_height</span> <span class="o">=</span> <span class="n">uniform_box_height</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">step_text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">wrapped_steps</span><span class="p">):</span>
             <span class="n">x_left</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">box_width</span> <span class="o">+</span> <span class="n">gap</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">text_align</span> <span class="o">==</span> <span class="s2">&quot;left&quot;</span><span class="p">:</span>
@@ -2859,7 +3036,6 @@ Defaults to -22.5.</p>
                 <span class="n">offset</span> <span class="o">=</span> <span class="n">title_dy</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="p">)</span>
-
 
     <span class="bp">self</span><span class="o">.</span><span class="n">story_layers</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
         <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;special_cta&#39;</span><span class="p">,</span>
@@ -3060,40 +3236,7 @@ is <code>'left'</code> or <code>'right'</code>.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">616</span>
-<span class="normal">617</span>
-<span class="normal">618</span>
-<span class="normal">619</span>
-<span class="normal">620</span>
-<span class="normal">621</span>
-<span class="normal">622</span>
-<span class="normal">623</span>
-<span class="normal">624</span>
-<span class="normal">625</span>
-<span class="normal">626</span>
-<span class="normal">627</span>
-<span class="normal">628</span>
-<span class="normal">629</span>
-<span class="normal">630</span>
-<span class="normal">631</span>
-<span class="normal">632</span>
-<span class="normal">633</span>
-<span class="normal">634</span>
-<span class="normal">635</span>
-<span class="normal">636</span>
-<span class="normal">637</span>
-<span class="normal">638</span>
-<span class="normal">639</span>
-<span class="normal">640</span>
-<span class="normal">641</span>
-<span class="normal">642</span>
-<span class="normal">643</span>
-<span class="normal">644</span>
-<span class="normal">645</span>
-<span class="normal">646</span>
-<span class="normal">647</span>
-<span class="normal">648</span>
-<span class="normal">649</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">649</span>
 <span class="normal">650</span>
 <span class="normal">651</span>
 <span class="normal">652</span>
@@ -3106,7 +3249,40 @@ is <code>'left'</code> or <code>'right'</code>.</p>
 <span class="normal">659</span>
 <span class="normal">660</span>
 <span class="normal">661</span>
-<span class="normal">662</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">):</span>
+<span class="normal">662</span>
+<span class="normal">663</span>
+<span class="normal">664</span>
+<span class="normal">665</span>
+<span class="normal">666</span>
+<span class="normal">667</span>
+<span class="normal">668</span>
+<span class="normal">669</span>
+<span class="normal">670</span>
+<span class="normal">671</span>
+<span class="normal">672</span>
+<span class="normal">673</span>
+<span class="normal">674</span>
+<span class="normal">675</span>
+<span class="normal">676</span>
+<span class="normal">677</span>
+<span class="normal">678</span>
+<span class="normal">679</span>
+<span class="normal">680</span>
+<span class="normal">681</span>
+<span class="normal">682</span>
+<span class="normal">683</span>
+<span class="normal">684</span>
+<span class="normal">685</span>
+<span class="normal">686</span>
+<span class="normal">687</span>
+<span class="normal">688</span>
+<span class="normal">689</span>
+<span class="normal">690</span>
+<span class="normal">691</span>
+<span class="normal">692</span>
+<span class="normal">693</span>
+<span class="normal">694</span>
+<span class="normal">695</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a source (or credits) attribution layer to the story.</span>
 
 <span class="sd">    Args:</span>
@@ -3538,40 +3714,7 @@ Defaults to 0.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">665</span>
-<span class="normal">666</span>
-<span class="normal">667</span>
-<span class="normal">668</span>
-<span class="normal">669</span>
-<span class="normal">670</span>
-<span class="normal">671</span>
-<span class="normal">672</span>
-<span class="normal">673</span>
-<span class="normal">674</span>
-<span class="normal">675</span>
-<span class="normal">676</span>
-<span class="normal">677</span>
-<span class="normal">678</span>
-<span class="normal">679</span>
-<span class="normal">680</span>
-<span class="normal">681</span>
-<span class="normal">682</span>
-<span class="normal">683</span>
-<span class="normal">684</span>
-<span class="normal">685</span>
-<span class="normal">686</span>
-<span class="normal">687</span>
-<span class="normal">688</span>
-<span class="normal">689</span>
-<span class="normal">690</span>
-<span class="normal">691</span>
-<span class="normal">692</span>
-<span class="normal">693</span>
-<span class="normal">694</span>
-<span class="normal">695</span>
-<span class="normal">696</span>
-<span class="normal">697</span>
-<span class="normal">698</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">698</span>
 <span class="normal">699</span>
 <span class="normal">700</span>
 <span class="normal">701</span>
@@ -3805,7 +3948,53 @@ Defaults to 0.</p>
 <span class="normal">929</span>
 <span class="normal">930</span>
 <span class="normal">931</span>
-<span class="normal">932</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_annotation</span><span class="p">(</span>
+<span class="normal">932</span>
+<span class="normal">933</span>
+<span class="normal">934</span>
+<span class="normal">935</span>
+<span class="normal">936</span>
+<span class="normal">937</span>
+<span class="normal">938</span>
+<span class="normal">939</span>
+<span class="normal">940</span>
+<span class="normal">941</span>
+<span class="normal">942</span>
+<span class="normal">943</span>
+<span class="normal">944</span>
+<span class="normal">945</span>
+<span class="normal">946</span>
+<span class="normal">947</span>
+<span class="normal">948</span>
+<span class="normal">949</span>
+<span class="normal">950</span>
+<span class="normal">951</span>
+<span class="normal">952</span>
+<span class="normal">953</span>
+<span class="normal">954</span>
+<span class="normal">955</span>
+<span class="normal">956</span>
+<span class="normal">957</span>
+<span class="normal">958</span>
+<span class="normal">959</span>
+<span class="normal">960</span>
+<span class="normal">961</span>
+<span class="normal">962</span>
+<span class="normal">963</span>
+<span class="normal">964</span>
+<span class="normal">965</span>
+<span class="normal">966</span>
+<span class="normal">967</span>
+<span class="normal">968</span>
+<span class="normal">969</span>
+<span class="normal">970</span>
+<span class="normal">971</span>
+<span class="normal">972</span>
+<span class="normal">973</span>
+<span class="normal">974</span>
+<span class="normal">975</span>
+<span class="normal">976</span>
+<span class="normal">977</span>
+<span class="normal">978</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_annotation</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -3919,17 +4108,28 @@ Defaults to 0.</p>
         <span class="p">)</span>
     <span class="p">)</span>
     <span class="n">max_chars</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">max_width_px</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">approx_char_width</span><span class="p">,</span> <span class="mf">1e-9</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span><span class="p">[</span><span class="s1">&#39;text_wrap_min_chars&#39;</span><span class="p">])</span>
-    <span class="n">wrapped_lines</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span>
-        <span class="n">note_text</span><span class="p">,</span>
-        <span class="n">width</span><span class="o">=</span><span class="n">max_chars</span><span class="p">,</span>
-        <span class="n">break_long_words</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">break_on_hyphens</span><span class="o">=</span><span class="kc">False</span>
-    <span class="p">)</span> <span class="ow">or</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
-    <span class="n">wrapped_text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wrapped_lines</span><span class="p">)</span>
+
+    <span class="n">paragraphs</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">wrapped_text</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">paragraph</span> <span class="ow">in</span> <span class="n">paragraphs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="n">wrapped_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wrapped_lines</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span>
+                <span class="n">paragraph</span><span class="p">,</span> 
+                <span class="n">width</span><span class="o">=</span><span class="n">max_chars</span><span class="p">,</span>
+                <span class="n">break_long_words</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                <span class="n">break_on_hyphens</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">replace_whitespace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">wrapped_text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">wrapped_lines</span> <span class="k">if</span> <span class="n">wrapped_lines</span> <span class="k">else</span> <span class="p">[</span><span class="n">paragraph</span><span class="p">])</span>
+
 
     <span class="n">max_line_chars</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">wrapped_lines</span><span class="p">)</span>
     <span class="n">box_width_px</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_line_chars</span> <span class="o">*</span> <span class="n">approx_char_width</span><span class="p">,</span> <span class="n">max_width_px</span><span class="p">)</span>
-    <span class="n">box_height_px</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wrapped_lines</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">line_height_px</span>
+    <span class="n">box_height_px</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wrapped_text</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">line_height_px</span>
     <span class="n">box_padding_px</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
         <span class="s1">&#39;annotation_padding&#39;</span><span class="p">,</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;padding&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
@@ -4027,7 +4227,7 @@ Defaults to 0.</p>
                 <span class="n">stroke</span><span class="o">=</span><span class="n">box_stroke</span><span class="p">,</span>
                 <span class="n">strokeWidth</span><span class="o">=</span><span class="n">box_border_width</span><span class="p">,</span>
                 <span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span><span class="p">,</span>
-                <span class="n">dy</span> <span class="o">=</span> <span class="n">dy</span>
+                <span class="n">dy</span> <span class="o">=</span> <span class="n">dy</span><span class="p">,</span>
 
             <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
                 <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;box_x1:Q&#39;</span><span class="p">),</span>
@@ -4037,9 +4237,11 @@ Defaults to 0.</p>
             <span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">chart</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
         <span class="p">)</span>
 
+
+        <span class="c1"># SEI QUI</span>
         <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
             <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">annotation_data</span><span class="p">)</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span>
-                <span class="n">text</span><span class="o">=</span><span class="n">wrapped_text</span><span class="p">,</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">wrapped_text</span><span class="p">,</span>
                 <span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
                 <span class="n">baseline</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
                 <span class="n">font</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">font</span><span class="p">,</span>
@@ -4379,53 +4581,7 @@ Must be one of <code>'normal'</code> or <code>'italic'</code>. Defaults to "norm
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 935</span>
-<span class="normal"> 936</span>
-<span class="normal"> 937</span>
-<span class="normal"> 938</span>
-<span class="normal"> 939</span>
-<span class="normal"> 940</span>
-<span class="normal"> 941</span>
-<span class="normal"> 942</span>
-<span class="normal"> 943</span>
-<span class="normal"> 944</span>
-<span class="normal"> 945</span>
-<span class="normal"> 946</span>
-<span class="normal"> 947</span>
-<span class="normal"> 948</span>
-<span class="normal"> 949</span>
-<span class="normal"> 950</span>
-<span class="normal"> 951</span>
-<span class="normal"> 952</span>
-<span class="normal"> 953</span>
-<span class="normal"> 954</span>
-<span class="normal"> 955</span>
-<span class="normal"> 956</span>
-<span class="normal"> 957</span>
-<span class="normal"> 958</span>
-<span class="normal"> 959</span>
-<span class="normal"> 960</span>
-<span class="normal"> 961</span>
-<span class="normal"> 962</span>
-<span class="normal"> 963</span>
-<span class="normal"> 964</span>
-<span class="normal"> 965</span>
-<span class="normal"> 966</span>
-<span class="normal"> 967</span>
-<span class="normal"> 968</span>
-<span class="normal"> 969</span>
-<span class="normal"> 970</span>
-<span class="normal"> 971</span>
-<span class="normal"> 972</span>
-<span class="normal"> 973</span>
-<span class="normal"> 974</span>
-<span class="normal"> 975</span>
-<span class="normal"> 976</span>
-<span class="normal"> 977</span>
-<span class="normal"> 978</span>
-<span class="normal"> 979</span>
-<span class="normal"> 980</span>
-<span class="normal"> 981</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 981</span>
 <span class="normal"> 982</span>
 <span class="normal"> 983</span>
 <span class="normal"> 984</span>
@@ -4553,7 +4709,53 @@ Must be one of <code>'normal'</code> or <code>'italic'</code>. Defaults to "norm
 <span class="normal">1106</span>
 <span class="normal">1107</span>
 <span class="normal">1108</span>
-<span class="normal">1109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_line</span><span class="p">(</span>
+<span class="normal">1109</span>
+<span class="normal">1110</span>
+<span class="normal">1111</span>
+<span class="normal">1112</span>
+<span class="normal">1113</span>
+<span class="normal">1114</span>
+<span class="normal">1115</span>
+<span class="normal">1116</span>
+<span class="normal">1117</span>
+<span class="normal">1118</span>
+<span class="normal">1119</span>
+<span class="normal">1120</span>
+<span class="normal">1121</span>
+<span class="normal">1122</span>
+<span class="normal">1123</span>
+<span class="normal">1124</span>
+<span class="normal">1125</span>
+<span class="normal">1126</span>
+<span class="normal">1127</span>
+<span class="normal">1128</span>
+<span class="normal">1129</span>
+<span class="normal">1130</span>
+<span class="normal">1131</span>
+<span class="normal">1132</span>
+<span class="normal">1133</span>
+<span class="normal">1134</span>
+<span class="normal">1135</span>
+<span class="normal">1136</span>
+<span class="normal">1137</span>
+<span class="normal">1138</span>
+<span class="normal">1139</span>
+<span class="normal">1140</span>
+<span class="normal">1141</span>
+<span class="normal">1142</span>
+<span class="normal">1143</span>
+<span class="normal">1144</span>
+<span class="normal">1145</span>
+<span class="normal">1146</span>
+<span class="normal">1147</span>
+<span class="normal">1148</span>
+<span class="normal">1149</span>
+<span class="normal">1150</span>
+<span class="normal">1151</span>
+<span class="normal">1152</span>
+<span class="normal">1153</span>
+<span class="normal">1154</span>
+<span class="normal">1155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_line</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">value</span><span class="p">,</span>
         <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
@@ -4876,184 +5078,7 @@ Higher values increase render accuracy and image size. Defaults to 150.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2164</span>
-<span class="normal">2165</span>
-<span class="normal">2166</span>
-<span class="normal">2167</span>
-<span class="normal">2168</span>
-<span class="normal">2169</span>
-<span class="normal">2170</span>
-<span class="normal">2171</span>
-<span class="normal">2172</span>
-<span class="normal">2173</span>
-<span class="normal">2174</span>
-<span class="normal">2175</span>
-<span class="normal">2176</span>
-<span class="normal">2177</span>
-<span class="normal">2178</span>
-<span class="normal">2179</span>
-<span class="normal">2180</span>
-<span class="normal">2181</span>
-<span class="normal">2182</span>
-<span class="normal">2183</span>
-<span class="normal">2184</span>
-<span class="normal">2185</span>
-<span class="normal">2186</span>
-<span class="normal">2187</span>
-<span class="normal">2188</span>
-<span class="normal">2189</span>
-<span class="normal">2190</span>
-<span class="normal">2191</span>
-<span class="normal">2192</span>
-<span class="normal">2193</span>
-<span class="normal">2194</span>
-<span class="normal">2195</span>
-<span class="normal">2196</span>
-<span class="normal">2197</span>
-<span class="normal">2198</span>
-<span class="normal">2199</span>
-<span class="normal">2200</span>
-<span class="normal">2201</span>
-<span class="normal">2202</span>
-<span class="normal">2203</span>
-<span class="normal">2204</span>
-<span class="normal">2205</span>
-<span class="normal">2206</span>
-<span class="normal">2207</span>
-<span class="normal">2208</span>
-<span class="normal">2209</span>
-<span class="normal">2210</span>
-<span class="normal">2211</span>
-<span class="normal">2212</span>
-<span class="normal">2213</span>
-<span class="normal">2214</span>
-<span class="normal">2215</span>
-<span class="normal">2216</span>
-<span class="normal">2217</span>
-<span class="normal">2218</span>
-<span class="normal">2219</span>
-<span class="normal">2220</span>
-<span class="normal">2221</span>
-<span class="normal">2222</span>
-<span class="normal">2223</span>
-<span class="normal">2224</span>
-<span class="normal">2225</span>
-<span class="normal">2226</span>
-<span class="normal">2227</span>
-<span class="normal">2228</span>
-<span class="normal">2229</span>
-<span class="normal">2230</span>
-<span class="normal">2231</span>
-<span class="normal">2232</span>
-<span class="normal">2233</span>
-<span class="normal">2234</span>
-<span class="normal">2235</span>
-<span class="normal">2236</span>
-<span class="normal">2237</span>
-<span class="normal">2238</span>
-<span class="normal">2239</span>
-<span class="normal">2240</span>
-<span class="normal">2241</span>
-<span class="normal">2242</span>
-<span class="normal">2243</span>
-<span class="normal">2244</span>
-<span class="normal">2245</span>
-<span class="normal">2246</span>
-<span class="normal">2247</span>
-<span class="normal">2248</span>
-<span class="normal">2249</span>
-<span class="normal">2250</span>
-<span class="normal">2251</span>
-<span class="normal">2252</span>
-<span class="normal">2253</span>
-<span class="normal">2254</span>
-<span class="normal">2255</span>
-<span class="normal">2256</span>
-<span class="normal">2257</span>
-<span class="normal">2258</span>
-<span class="normal">2259</span>
-<span class="normal">2260</span>
-<span class="normal">2261</span>
-<span class="normal">2262</span>
-<span class="normal">2263</span>
-<span class="normal">2264</span>
-<span class="normal">2265</span>
-<span class="normal">2266</span>
-<span class="normal">2267</span>
-<span class="normal">2268</span>
-<span class="normal">2269</span>
-<span class="normal">2270</span>
-<span class="normal">2271</span>
-<span class="normal">2272</span>
-<span class="normal">2273</span>
-<span class="normal">2274</span>
-<span class="normal">2275</span>
-<span class="normal">2276</span>
-<span class="normal">2277</span>
-<span class="normal">2278</span>
-<span class="normal">2279</span>
-<span class="normal">2280</span>
-<span class="normal">2281</span>
-<span class="normal">2282</span>
-<span class="normal">2283</span>
-<span class="normal">2284</span>
-<span class="normal">2285</span>
-<span class="normal">2286</span>
-<span class="normal">2287</span>
-<span class="normal">2288</span>
-<span class="normal">2289</span>
-<span class="normal">2290</span>
-<span class="normal">2291</span>
-<span class="normal">2292</span>
-<span class="normal">2293</span>
-<span class="normal">2294</span>
-<span class="normal">2295</span>
-<span class="normal">2296</span>
-<span class="normal">2297</span>
-<span class="normal">2298</span>
-<span class="normal">2299</span>
-<span class="normal">2300</span>
-<span class="normal">2301</span>
-<span class="normal">2302</span>
-<span class="normal">2303</span>
-<span class="normal">2304</span>
-<span class="normal">2305</span>
-<span class="normal">2306</span>
-<span class="normal">2307</span>
-<span class="normal">2308</span>
-<span class="normal">2309</span>
-<span class="normal">2310</span>
-<span class="normal">2311</span>
-<span class="normal">2312</span>
-<span class="normal">2313</span>
-<span class="normal">2314</span>
-<span class="normal">2315</span>
-<span class="normal">2316</span>
-<span class="normal">2317</span>
-<span class="normal">2318</span>
-<span class="normal">2319</span>
-<span class="normal">2320</span>
-<span class="normal">2321</span>
-<span class="normal">2322</span>
-<span class="normal">2323</span>
-<span class="normal">2324</span>
-<span class="normal">2325</span>
-<span class="normal">2326</span>
-<span class="normal">2327</span>
-<span class="normal">2328</span>
-<span class="normal">2329</span>
-<span class="normal">2330</span>
-<span class="normal">2331</span>
-<span class="normal">2332</span>
-<span class="normal">2333</span>
-<span class="normal">2334</span>
-<span class="normal">2335</span>
-<span class="normal">2336</span>
-<span class="normal">2337</span>
-<span class="normal">2338</span>
-<span class="normal">2339</span>
-<span class="normal">2340</span>
-<span class="normal">2341</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2341</span>
 <span class="normal">2342</span>
 <span class="normal">2343</span>
 <span class="normal">2344</span>
@@ -5117,7 +5142,182 @@ Higher values increase render accuracy and image size. Defaults to 150.</p>
 <span class="normal">2402</span>
 <span class="normal">2403</span>
 <span class="normal">2404</span>
-<span class="normal">2405</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ppi</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="normal">2405</span>
+<span class="normal">2406</span>
+<span class="normal">2407</span>
+<span class="normal">2408</span>
+<span class="normal">2409</span>
+<span class="normal">2410</span>
+<span class="normal">2411</span>
+<span class="normal">2412</span>
+<span class="normal">2413</span>
+<span class="normal">2414</span>
+<span class="normal">2415</span>
+<span class="normal">2416</span>
+<span class="normal">2417</span>
+<span class="normal">2418</span>
+<span class="normal">2419</span>
+<span class="normal">2420</span>
+<span class="normal">2421</span>
+<span class="normal">2422</span>
+<span class="normal">2423</span>
+<span class="normal">2424</span>
+<span class="normal">2425</span>
+<span class="normal">2426</span>
+<span class="normal">2427</span>
+<span class="normal">2428</span>
+<span class="normal">2429</span>
+<span class="normal">2430</span>
+<span class="normal">2431</span>
+<span class="normal">2432</span>
+<span class="normal">2433</span>
+<span class="normal">2434</span>
+<span class="normal">2435</span>
+<span class="normal">2436</span>
+<span class="normal">2437</span>
+<span class="normal">2438</span>
+<span class="normal">2439</span>
+<span class="normal">2440</span>
+<span class="normal">2441</span>
+<span class="normal">2442</span>
+<span class="normal">2443</span>
+<span class="normal">2444</span>
+<span class="normal">2445</span>
+<span class="normal">2446</span>
+<span class="normal">2447</span>
+<span class="normal">2448</span>
+<span class="normal">2449</span>
+<span class="normal">2450</span>
+<span class="normal">2451</span>
+<span class="normal">2452</span>
+<span class="normal">2453</span>
+<span class="normal">2454</span>
+<span class="normal">2455</span>
+<span class="normal">2456</span>
+<span class="normal">2457</span>
+<span class="normal">2458</span>
+<span class="normal">2459</span>
+<span class="normal">2460</span>
+<span class="normal">2461</span>
+<span class="normal">2462</span>
+<span class="normal">2463</span>
+<span class="normal">2464</span>
+<span class="normal">2465</span>
+<span class="normal">2466</span>
+<span class="normal">2467</span>
+<span class="normal">2468</span>
+<span class="normal">2469</span>
+<span class="normal">2470</span>
+<span class="normal">2471</span>
+<span class="normal">2472</span>
+<span class="normal">2473</span>
+<span class="normal">2474</span>
+<span class="normal">2475</span>
+<span class="normal">2476</span>
+<span class="normal">2477</span>
+<span class="normal">2478</span>
+<span class="normal">2479</span>
+<span class="normal">2480</span>
+<span class="normal">2481</span>
+<span class="normal">2482</span>
+<span class="normal">2483</span>
+<span class="normal">2484</span>
+<span class="normal">2485</span>
+<span class="normal">2486</span>
+<span class="normal">2487</span>
+<span class="normal">2488</span>
+<span class="normal">2489</span>
+<span class="normal">2490</span>
+<span class="normal">2491</span>
+<span class="normal">2492</span>
+<span class="normal">2493</span>
+<span class="normal">2494</span>
+<span class="normal">2495</span>
+<span class="normal">2496</span>
+<span class="normal">2497</span>
+<span class="normal">2498</span>
+<span class="normal">2499</span>
+<span class="normal">2500</span>
+<span class="normal">2501</span>
+<span class="normal">2502</span>
+<span class="normal">2503</span>
+<span class="normal">2504</span>
+<span class="normal">2505</span>
+<span class="normal">2506</span>
+<span class="normal">2507</span>
+<span class="normal">2508</span>
+<span class="normal">2509</span>
+<span class="normal">2510</span>
+<span class="normal">2511</span>
+<span class="normal">2512</span>
+<span class="normal">2513</span>
+<span class="normal">2514</span>
+<span class="normal">2515</span>
+<span class="normal">2516</span>
+<span class="normal">2517</span>
+<span class="normal">2518</span>
+<span class="normal">2519</span>
+<span class="normal">2520</span>
+<span class="normal">2521</span>
+<span class="normal">2522</span>
+<span class="normal">2523</span>
+<span class="normal">2524</span>
+<span class="normal">2525</span>
+<span class="normal">2526</span>
+<span class="normal">2527</span>
+<span class="normal">2528</span>
+<span class="normal">2529</span>
+<span class="normal">2530</span>
+<span class="normal">2531</span>
+<span class="normal">2532</span>
+<span class="normal">2533</span>
+<span class="normal">2534</span>
+<span class="normal">2535</span>
+<span class="normal">2536</span>
+<span class="normal">2537</span>
+<span class="normal">2538</span>
+<span class="normal">2539</span>
+<span class="normal">2540</span>
+<span class="normal">2541</span>
+<span class="normal">2542</span>
+<span class="normal">2543</span>
+<span class="normal">2544</span>
+<span class="normal">2545</span>
+<span class="normal">2546</span>
+<span class="normal">2547</span>
+<span class="normal">2548</span>
+<span class="normal">2549</span>
+<span class="normal">2550</span>
+<span class="normal">2551</span>
+<span class="normal">2552</span>
+<span class="normal">2553</span>
+<span class="normal">2554</span>
+<span class="normal">2555</span>
+<span class="normal">2556</span>
+<span class="normal">2557</span>
+<span class="normal">2558</span>
+<span class="normal">2559</span>
+<span class="normal">2560</span>
+<span class="normal">2561</span>
+<span class="normal">2562</span>
+<span class="normal">2563</span>
+<span class="normal">2564</span>
+<span class="normal">2565</span>
+<span class="normal">2566</span>
+<span class="normal">2567</span>
+<span class="normal">2568</span>
+<span class="normal">2569</span>
+<span class="normal">2570</span>
+<span class="normal">2571</span>
+<span class="normal">2572</span>
+<span class="normal">2573</span>
+<span class="normal">2574</span>
+<span class="normal">2575</span>
+<span class="normal">2576</span>
+<span class="normal">2577</span>
+<span class="normal">2578</span>
+<span class="normal">2579</span>
+<span class="normal">2580</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ppi</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Renders all elements, overlays, and structural layers of the story into a single compound chart.</span>
 
 <span class="sd">    Optionally exports the final visualization to a file in the `export/` directory in SVG,</span>
@@ -5154,6 +5354,7 @@ Higher values increase render accuracy and image size. Defaults to 150.</p>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;filename&#39; must be a string or False, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">save</span> <span class="o">==</span> <span class="s2">&quot;png&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ppi</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="n">ppi</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">ppi</span> <span class="o">=</span> <span class="mi">150</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ppi</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="n">ppi</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&#39;ppi&#39; must be a positive number.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ppi</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">:</span>
@@ -5161,9 +5362,6 @@ Higher values increase render accuracy and image size. Defaults to 150.</p>
                 <span class="sa">f</span><span class="s2">&quot;A high ppi value (</span><span class="si">{</span><span class="n">ppi</span><span class="si">}</span><span class="s2">) was provided. This may significantly slow down chart rendering.&quot;</span><span class="p">,</span>
                 <span class="ne">UserWarning</span><span class="p">,</span>
             <span class="p">)</span>
-    <span class="k">elif</span> <span class="n">ppi</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="n">ppi</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">ppi</span> <span class="o">=</span> <span class="mi">150</span>
-
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_vstack</span><span class="p">(</span><span class="n">charts</span><span class="p">,</span> <span class="n">spacing</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">charts</span><span class="p">:</span>
