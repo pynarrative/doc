@@ -3994,7 +3994,8 @@ Defaults to 0.</p>
 <span class="normal">975</span>
 <span class="normal">976</span>
 <span class="normal">977</span>
-<span class="normal">978</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_annotation</span><span class="p">(</span>
+<span class="normal">978</span>
+<span class="normal">979</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_annotation</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -4109,25 +4110,25 @@ Defaults to 0.</p>
     <span class="p">)</span>
     <span class="n">max_chars</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">max_width_px</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">approx_char_width</span><span class="p">,</span> <span class="mf">1e-9</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span><span class="p">[</span><span class="s1">&#39;text_wrap_min_chars&#39;</span><span class="p">])</span>
 
-    <span class="n">paragraphs</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">wrapped_text</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">for</span> <span class="n">paragraph</span> <span class="ow">in</span> <span class="n">paragraphs</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
             <span class="n">wrapped_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">wrapped_lines</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span>
-                <span class="n">paragraph</span><span class="p">,</span> 
-                <span class="n">width</span><span class="o">=</span><span class="n">max_chars</span><span class="p">,</span>
+                <span class="n">line</span><span class="p">,</span> 
+                <span class="n">width</span> <span class="o">=</span> <span class="n">max_chars</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="c1">#piccola correzione</span>
                 <span class="n">break_long_words</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                 <span class="n">break_on_hyphens</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                 <span class="n">replace_whitespace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="p">)</span>
 
-            <span class="n">wrapped_text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">wrapped_lines</span> <span class="k">if</span> <span class="n">wrapped_lines</span> <span class="k">else</span> <span class="p">[</span><span class="n">paragraph</span><span class="p">])</span>
+        <span class="n">wrapped_text</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">wrapped_lines</span> <span class="k">if</span> <span class="n">wrapped_lines</span> <span class="k">else</span> <span class="p">[</span><span class="n">lines</span><span class="p">])</span>
 
 
-    <span class="n">max_line_chars</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">wrapped_lines</span><span class="p">)</span>
+    <span class="n">max_line_chars</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wrapped_line</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">wrapped_line</span> <span class="ow">in</span> <span class="n">wrapped_text</span><span class="p">)</span>
     <span class="n">box_width_px</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_line_chars</span> <span class="o">*</span> <span class="n">approx_char_width</span><span class="p">,</span> <span class="n">max_width_px</span><span class="p">)</span>
     <span class="n">box_height_px</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wrapped_text</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">line_height_px</span>
     <span class="n">box_padding_px</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chart_style</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
@@ -4219,6 +4220,7 @@ Defaults to 0.</p>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_width</span><span class="p">)</span> <span class="c1">#DEB</span>
         <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
             <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">annotation_data</span><span class="p">)</span><span class="o">.</span><span class="n">mark_rect</span><span class="p">(</span>
                 <span class="n">color</span><span class="o">=</span><span class="n">box_fill</span><span class="p">,</span>
@@ -4581,8 +4583,7 @@ Must be one of <code>'normal'</code> or <code>'italic'</code>. Defaults to "norm
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 981</span>
-<span class="normal"> 982</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 982</span>
 <span class="normal"> 983</span>
 <span class="normal"> 984</span>
 <span class="normal"> 985</span>
@@ -4755,7 +4756,8 @@ Must be one of <code>'normal'</code> or <code>'italic'</code>. Defaults to "norm
 <span class="normal">1152</span>
 <span class="normal">1153</span>
 <span class="normal">1154</span>
-<span class="normal">1155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_line</span><span class="p">(</span>
+<span class="normal">1155</span>
+<span class="normal">1156</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_line</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">value</span><span class="p">,</span>
         <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
@@ -5078,8 +5080,7 @@ Higher values increase render accuracy and image size. Defaults to 150.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2341</span>
-<span class="normal">2342</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2342</span>
 <span class="normal">2343</span>
 <span class="normal">2344</span>
 <span class="normal">2345</span>
@@ -5317,7 +5318,8 @@ Higher values increase render accuracy and image size. Defaults to 150.</p>
 <span class="normal">2577</span>
 <span class="normal">2578</span>
 <span class="normal">2579</span>
-<span class="normal">2580</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ppi</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="normal">2580</span>
+<span class="normal">2581</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ppi</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Renders all elements, overlays, and structural layers of the story into a single compound chart.</span>
 
 <span class="sd">    Optionally exports the final visualization to a file in the `export/` directory in SVG,</span>
