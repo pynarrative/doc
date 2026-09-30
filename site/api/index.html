@@ -88,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="#" title="Pynarrative API Documentation" class="md-header__button md-logo" aria-label="Pynarrative API Documentation" data-md-component="logo">
+    <a href=".." title="Pynarrative API Documentation" class="md-header__button md-logo" aria-label="Pynarrative API Documentation" data-md-component="logo">
       
   <img src="../assets/pynarrative_logo.png" alt="logo">
 
@@ -300,6 +300,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#pynarrative.Story.add_labels_chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_labels_chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pynarrative.Story.add_title" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -426,6 +437,17 @@
   
     <nav class="md-nav" aria-label="Story">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pynarrative.Story.add_labels_chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_labels_chart
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#pynarrative.Story.add_title" class="md-nav__link">
@@ -1077,6 +1099,734 @@ constructor.</p>
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="pynarrative.Story.add_labels_chart" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">add_labels_chart</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">geodata</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">geodata_label</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Adds custom text labels to an existing chart layer or map visualization.</p>
+<p>Creates an Altair <code>mark_text</code> layer positioned relative to existing chart encodings
+or geodata centroids. Supports custom orientations, offsets, and fonts.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>values</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="list">list</span> | <span title="pandas.Series">Series</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Column name or explicit list of values
+to display as labels. If None, automatically defaults to the Y-axis encoding field.
+Defaults to None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>color</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Custom fill color for the label text. If omitted or None,
+falls back to the <code>chart_label_color</code> defined in the template style settings.
+Defaults to None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>orientation</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Preset label layout orientation. Must be one of
+<code>'horizontal'</code>, <code>'vertical_left'</code> (angle=90), or <code>'vertical_right'</code> (angle=270).
+For custom rotations, use <code>'horizontal'</code> and set <code>angle</code> directly.
+Defaults to "horizontal".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;horizontal&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>angle</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | <span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Label rotation angle in degrees. Must be between 0 and 360.
+Cannot be combined with preset orientations other than <code>'horizontal'</code>.
+Defaults to 0.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dx</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | <span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Horizontal pixel offset for text positioning.
+Defaults to 0.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dy</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | <span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Vertical pixel offset for text positioning.
+Defaults to 0.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>font_size</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | <span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Font size of the text labels in pixels.
+Defaults to 11.</p>
+              </div>
+            </td>
+            <td>
+                  <code>11</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>font_weight</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Font weight for the label text. Must be one of
+<code>'normal'</code> or <code>'bold'</code>. Defaults to "normal".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;normal&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>geodata</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether the target chart represents geographic map data.
+If True, labels are placed on spatial geometry centroids. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>geodata_label</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The column name containing text labels when <code>geodata=True</code>.
+Required if <code>geodata</code> is True. Defaults to None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>Story</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The current instance (<code>self</code>) to enable method chaining.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If numerical parameters (<code>angle</code>, <code>dx</code>, <code>dy</code>, <code>font_size</code>) receive boolean or non-numeric types.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>geodata</code> is not a boolean.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If used on multi-series charts without enabling <code>geodata=True</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>angle</code> is not between 0 and 360 degrees.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>orientation</code> is not one of <code>'horizontal'</code>, <code>'vertical_left'</code>, or <code>'vertical_right'</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If a non-zero <code>angle</code> is combined with <code>'vertical_left'</code> or <code>'vertical_right'</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>font_weight</code> is not <code>'normal'</code> or <code>'bold'</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>geodata=True</code> but <code>geodata_label</code> is omitted.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If no Y-axis encoding or explicit <code>values</code> can be resolved.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2144</span>
+<span class="normal">2145</span>
+<span class="normal">2146</span>
+<span class="normal">2147</span>
+<span class="normal">2148</span>
+<span class="normal">2149</span>
+<span class="normal">2150</span>
+<span class="normal">2151</span>
+<span class="normal">2152</span>
+<span class="normal">2153</span>
+<span class="normal">2154</span>
+<span class="normal">2155</span>
+<span class="normal">2156</span>
+<span class="normal">2157</span>
+<span class="normal">2158</span>
+<span class="normal">2159</span>
+<span class="normal">2160</span>
+<span class="normal">2161</span>
+<span class="normal">2162</span>
+<span class="normal">2163</span>
+<span class="normal">2164</span>
+<span class="normal">2165</span>
+<span class="normal">2166</span>
+<span class="normal">2167</span>
+<span class="normal">2168</span>
+<span class="normal">2169</span>
+<span class="normal">2170</span>
+<span class="normal">2171</span>
+<span class="normal">2172</span>
+<span class="normal">2173</span>
+<span class="normal">2174</span>
+<span class="normal">2175</span>
+<span class="normal">2176</span>
+<span class="normal">2177</span>
+<span class="normal">2178</span>
+<span class="normal">2179</span>
+<span class="normal">2180</span>
+<span class="normal">2181</span>
+<span class="normal">2182</span>
+<span class="normal">2183</span>
+<span class="normal">2184</span>
+<span class="normal">2185</span>
+<span class="normal">2186</span>
+<span class="normal">2187</span>
+<span class="normal">2188</span>
+<span class="normal">2189</span>
+<span class="normal">2190</span>
+<span class="normal">2191</span>
+<span class="normal">2192</span>
+<span class="normal">2193</span>
+<span class="normal">2194</span>
+<span class="normal">2195</span>
+<span class="normal">2196</span>
+<span class="normal">2197</span>
+<span class="normal">2198</span>
+<span class="normal">2199</span>
+<span class="normal">2200</span>
+<span class="normal">2201</span>
+<span class="normal">2202</span>
+<span class="normal">2203</span>
+<span class="normal">2204</span>
+<span class="normal">2205</span>
+<span class="normal">2206</span>
+<span class="normal">2207</span>
+<span class="normal">2208</span>
+<span class="normal">2209</span>
+<span class="normal">2210</span>
+<span class="normal">2211</span>
+<span class="normal">2212</span>
+<span class="normal">2213</span>
+<span class="normal">2214</span>
+<span class="normal">2215</span>
+<span class="normal">2216</span>
+<span class="normal">2217</span>
+<span class="normal">2218</span>
+<span class="normal">2219</span>
+<span class="normal">2220</span>
+<span class="normal">2221</span>
+<span class="normal">2222</span>
+<span class="normal">2223</span>
+<span class="normal">2224</span>
+<span class="normal">2225</span>
+<span class="normal">2226</span>
+<span class="normal">2227</span>
+<span class="normal">2228</span>
+<span class="normal">2229</span>
+<span class="normal">2230</span>
+<span class="normal">2231</span>
+<span class="normal">2232</span>
+<span class="normal">2233</span>
+<span class="normal">2234</span>
+<span class="normal">2235</span>
+<span class="normal">2236</span>
+<span class="normal">2237</span>
+<span class="normal">2238</span>
+<span class="normal">2239</span>
+<span class="normal">2240</span>
+<span class="normal">2241</span>
+<span class="normal">2242</span>
+<span class="normal">2243</span>
+<span class="normal">2244</span>
+<span class="normal">2245</span>
+<span class="normal">2246</span>
+<span class="normal">2247</span>
+<span class="normal">2248</span>
+<span class="normal">2249</span>
+<span class="normal">2250</span>
+<span class="normal">2251</span>
+<span class="normal">2252</span>
+<span class="normal">2253</span>
+<span class="normal">2254</span>
+<span class="normal">2255</span>
+<span class="normal">2256</span>
+<span class="normal">2257</span>
+<span class="normal">2258</span>
+<span class="normal">2259</span>
+<span class="normal">2260</span>
+<span class="normal">2261</span>
+<span class="normal">2262</span>
+<span class="normal">2263</span>
+<span class="normal">2264</span>
+<span class="normal">2265</span>
+<span class="normal">2266</span>
+<span class="normal">2267</span>
+<span class="normal">2268</span>
+<span class="normal">2269</span>
+<span class="normal">2270</span>
+<span class="normal">2271</span>
+<span class="normal">2272</span>
+<span class="normal">2273</span>
+<span class="normal">2274</span>
+<span class="normal">2275</span>
+<span class="normal">2276</span>
+<span class="normal">2277</span>
+<span class="normal">2278</span>
+<span class="normal">2279</span>
+<span class="normal">2280</span>
+<span class="normal">2281</span>
+<span class="normal">2282</span>
+<span class="normal">2283</span>
+<span class="normal">2284</span>
+<span class="normal">2285</span>
+<span class="normal">2286</span>
+<span class="normal">2287</span>
+<span class="normal">2288</span>
+<span class="normal">2289</span>
+<span class="normal">2290</span>
+<span class="normal">2291</span>
+<span class="normal">2292</span>
+<span class="normal">2293</span>
+<span class="normal">2294</span>
+<span class="normal">2295</span>
+<span class="normal">2296</span>
+<span class="normal">2297</span>
+<span class="normal">2298</span>
+<span class="normal">2299</span>
+<span class="normal">2300</span>
+<span class="normal">2301</span>
+<span class="normal">2302</span>
+<span class="normal">2303</span>
+<span class="normal">2304</span>
+<span class="normal">2305</span>
+<span class="normal">2306</span>
+<span class="normal">2307</span>
+<span class="normal">2308</span>
+<span class="normal">2309</span>
+<span class="normal">2310</span>
+<span class="normal">2311</span>
+<span class="normal">2312</span>
+<span class="normal">2313</span>
+<span class="normal">2314</span>
+<span class="normal">2315</span>
+<span class="normal">2316</span>
+<span class="normal">2317</span>
+<span class="normal">2318</span>
+<span class="normal">2319</span>
+<span class="normal">2320</span>
+<span class="normal">2321</span>
+<span class="normal">2322</span>
+<span class="normal">2323</span>
+<span class="normal">2324</span>
+<span class="normal">2325</span>
+<span class="normal">2326</span>
+<span class="normal">2327</span>
+<span class="normal">2328</span>
+<span class="normal">2329</span>
+<span class="normal">2330</span>
+<span class="normal">2331</span>
+<span class="normal">2332</span>
+<span class="normal">2333</span>
+<span class="normal">2334</span>
+<span class="normal">2335</span>
+<span class="normal">2336</span>
+<span class="normal">2337</span>
+<span class="normal">2338</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_labels_chart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                     <span class="n">values</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="n">orientation</span> <span class="o">=</span> <span class="s2">&quot;horizontal&quot;</span><span class="p">,</span>
+                     <span class="n">angle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                     <span class="n">dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                     <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                     <span class="n">font_size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+                     <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+                     <span class="n">geodata</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                     <span class="n">geodata_label</span> <span class="o">=</span> <span class="kc">None</span>
+                     <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds custom text labels to an existing chart layer or map visualization.</span>
+
+<span class="sd">    Creates an Altair `mark_text` layer positioned relative to existing chart encodings</span>
+<span class="sd">    or geodata centroids. Supports custom orientations, offsets, and fonts.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        values (str | list | pandas.Series, optional): Column name or explicit list of values</span>
+<span class="sd">            to display as labels. If None, automatically defaults to the Y-axis encoding field.</span>
+<span class="sd">            Defaults to None.</span>
+<span class="sd">        color (str, optional): Custom fill color for the label text. If omitted or None,</span>
+<span class="sd">            falls back to the `chart_label_color` defined in the template style settings.</span>
+<span class="sd">            Defaults to None.</span>
+<span class="sd">        orientation (str, optional): Preset label layout orientation. Must be one of</span>
+<span class="sd">            `&#39;horizontal&#39;`, `&#39;vertical_left&#39;` (angle=90), or `&#39;vertical_right&#39;` (angle=270).</span>
+<span class="sd">            For custom rotations, use `&#39;horizontal&#39;` and set `angle` directly.</span>
+<span class="sd">            Defaults to &quot;horizontal&quot;.</span>
+<span class="sd">        angle (int | float, optional): Label rotation angle in degrees. Must be between 0 and 360.</span>
+<span class="sd">            Cannot be combined with preset orientations other than `&#39;horizontal&#39;`.</span>
+<span class="sd">            Defaults to 0.</span>
+<span class="sd">        dx (int | float, optional): Horizontal pixel offset for text positioning.</span>
+<span class="sd">            Defaults to 0.</span>
+<span class="sd">        dy (int | float, optional): Vertical pixel offset for text positioning.</span>
+<span class="sd">            Defaults to 0.</span>
+<span class="sd">        font_size (int | float, optional): Font size of the text labels in pixels.</span>
+<span class="sd">            Defaults to 11.</span>
+<span class="sd">        font_weight (str, optional): Font weight for the label text. Must be one of</span>
+<span class="sd">            `&#39;normal&#39;` or `&#39;bold&#39;`. Defaults to &quot;normal&quot;.</span>
+<span class="sd">        geodata (bool, optional): Whether the target chart represents geographic map data.</span>
+<span class="sd">            If True, labels are placed on spatial geometry centroids. Defaults to False.</span>
+<span class="sd">        geodata_label (str, optional): The column name containing text labels when `geodata=True`.</span>
+<span class="sd">            Required if `geodata` is True. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Story: The current instance (`self`) to enable method chaining.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TypeError: If numerical parameters (`angle`, `dx`, `dy`, `font_size`) receive boolean or non-numeric types.</span>
+<span class="sd">        TypeError: If `geodata` is not a boolean.</span>
+<span class="sd">        ValueError: If used on multi-series charts without enabling `geodata=True`.</span>
+<span class="sd">        ValueError: If `angle` is not between 0 and 360 degrees.</span>
+<span class="sd">        ValueError: If `orientation` is not one of `&#39;horizontal&#39;`, `&#39;vertical_left&#39;`, or `&#39;vertical_right&#39;`.</span>
+<span class="sd">        ValueError: If a non-zero `angle` is combined with `&#39;vertical_left&#39;` or `&#39;vertical_right&#39;`.</span>
+<span class="sd">        ValueError: If `font_weight` is not `&#39;normal&#39;` or `&#39;bold&#39;`.</span>
+<span class="sd">        ValueError: If `geodata=True` but `geodata_label` is omitted.</span>
+<span class="sd">        ValueError: If no Y-axis encoding or explicit `values` can be resolved.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geodata</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;geodata&#39; must be a boolean, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">geodata</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;angle&#39; must be a numeric integer or float, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">angle</span> <span class="o">&lt;=</span> <span class="mi">360</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value of &#39;angle&#39; must be between 0 and 360, got </span><span class="si">{</span><span class="n">angle</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;dx&#39; must be a numeric integer or float, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;dy&#39; must be a numeric integer or float, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dy</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">font_size</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">font_size</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="n">font_size</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;font_size&#39; must be a positive number, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">font_size</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">font_weight</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span> <span class="s2">&quot;bold&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid &#39;font_weight&#39; value: &#39;</span><span class="si">{</span><span class="n">font_weight</span><span class="si">}</span><span class="s2">&#39;. Must be &#39;normal&#39; or &#39;bold&#39;&quot;</span><span class="p">)</span>
+
+    <span class="n">has_series</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_encoding_field_and_type</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">has_series</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">geodata</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;add_labels_chart cannot be used on charts with multiple series. &quot;</span>
+            <span class="s2">&quot;For geographical data, set &#39;geodata = True&#39;.&quot;</span>
+        <span class="p">)</span>
+
+
+    <span class="n">preset_orientations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span> <span class="s2">&quot;vertical_left&quot;</span><span class="p">,</span> <span class="s2">&quot;vertical_right&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">orientation</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">preset_orientations</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Invalid &#39;orientation&#39; value: &#39;</span><span class="si">{</span><span class="n">orientation</span><span class="si">}</span><span class="s2">&#39;. Must be one of </span><span class="si">{</span><span class="n">preset_orientations</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="s2">&quot;For custom layouts, use &#39;horizontal&#39; with explicit angle, dx, and dy settings.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">orientation</span> <span class="o">!=</span> <span class="s2">&quot;horizontal&quot;</span> <span class="ow">and</span> <span class="n">angle</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Cannot specify a custom angle (</span><span class="si">{</span><span class="n">angle</span><span class="si">}</span><span class="s2">) when using orientation &#39;</span><span class="si">{</span><span class="n">orientation</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+            <span class="s2">&quot;Use orientation &#39;horizontal&#39; when specifying custom angles.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s2">&quot;vertical_left&quot;</span><span class="p">:</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="mi">90</span>
+    <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s2">&quot;vertical_right&quot;</span><span class="p">:</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="mi">270</span>
+
+
+    <span class="n">mark_color</span> <span class="o">=</span> <span class="n">color</span> <span class="k">if</span> <span class="n">color</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;chart_label_color&quot;</span><span class="p">,</span> <span class="s2">&quot;#000000&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">geodata</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">geodata_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;When &#39;geodata=True&#39;, you must specify &#39;geodata_label&#39;.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s2">&quot;:&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">geodata_label</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must specify the geodata_label value encoding (ex: &#39;value:Q&#39; for quantities or &#39;word:N&#39; for nominal values).&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">geodata_label</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">label_encoding</span> <span class="o">=</span> <span class="n">geodata_label</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">centroids</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3035</span><span class="p">)</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
+            <span class="n">values</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">centroids</span><span class="o">.</span><span class="n">x</span>
+            <span class="n">values</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">centroids</span><span class="o">.</span><span class="n">y</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label_layer</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">values</span><span class="p">[</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()])</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span>
+                <span class="n">align</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                <span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span><span class="p">,</span>
+                <span class="n">dy</span> <span class="o">=</span> <span class="n">dy</span><span class="p">,</span>
+                <span class="n">lineBreak</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">angle</span> <span class="o">=</span> <span class="n">angle</span><span class="p">,</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="n">mark_color</span><span class="p">,</span>
+                <span class="n">fontSize</span> <span class="o">=</span> <span class="n">font_size</span><span class="p">,</span>
+                <span class="n">fontWeight</span> <span class="o">=</span> <span class="n">font_weight</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                <span class="n">longitude</span> <span class="o">=</span> <span class="s2">&quot;lon:Q&quot;</span><span class="p">,</span>
+                <span class="n">latitude</span> <span class="o">=</span> <span class="s2">&quot;lat:Q&quot;</span><span class="p">,</span>
+                <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">label_encoding</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span>
+
+
+    <span class="n">y_enc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">y_enc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">shorthand</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">y_enc</span><span class="p">,</span> <span class="s2">&quot;shorthand&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_enc</span><span class="p">))</span>
+        <span class="n">field_name</span> <span class="o">=</span> <span class="n">shorthand</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;:&quot;</span> <span class="ow">in</span> <span class="n">shorthand</span> <span class="k">else</span> <span class="n">shorthand</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">field_name</span><span class="si">}</span><span class="s2">:Q&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&#39;values&#39; must be a column name (str), a list, or a pandas Series.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s2">&quot;:&quot;</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                <span class="n">labels</span> <span class="o">=</span> <span class="n">values</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">values</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_numeric_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">values</span><span class="p">]):</span>
+                    <span class="n">labels</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">values</span><span class="si">}</span><span class="s2">:Q&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">labels</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">values</span><span class="si">}</span><span class="s2">:N&quot;</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)):</span>
+            <span class="n">first_elem</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">values</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">data_type</span> <span class="o">=</span> <span class="s2">&quot;Q&quot;</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">first_elem</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">))</span> <span class="k">else</span> <span class="s2">&quot;N&quot;</span>
+
+            <span class="n">chart_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">chart_data</span><span class="p">[</span><span class="s2">&quot;_custom_label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">chart_data</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;_custom_label:</span><span class="si">{</span><span class="n">data_type</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">labels</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Could not resolve labels: ensure self.encoding[&#39;y&#39;] is set &quot;</span>
+            <span class="s2">&quot;or provide a valid &#39;values&#39; parameter.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">text_encoding</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">label_layer</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span>
+        <span class="n">text</span><span class="o">=</span><span class="n">text_encoding</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span>
+        <span class="n">align</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span><span class="p">,</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">dy</span><span class="p">,</span>
+        <span class="n">lineBreak</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">angle</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">mark_color</span><span class="p">,</span>
+        <span class="n">fontSize</span> <span class="o">=</span> <span class="n">font_size</span><span class="p">,</span>
+        <span class="n">fontWeight</span> <span class="o">=</span> <span class="n">font_weight</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
 
 <div class="doc doc-object doc-function">
 
@@ -3992,8 +4742,7 @@ Defaults to 0.</p>
 <span class="normal">975</span>
 <span class="normal">976</span>
 <span class="normal">977</span>
-<span class="normal">978</span>
-<span class="normal">979</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_annotation</span><span class="p">(</span>
+<span class="normal">978</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_annotation</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -4218,7 +4967,6 @@ Defaults to 0.</p>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chart_width</span><span class="p">)</span> <span class="c1">#DEB</span>
         <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
             <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">annotation_data</span><span class="p">)</span><span class="o">.</span><span class="n">mark_rect</span><span class="p">(</span>
                 <span class="n">color</span><span class="o">=</span><span class="n">box_fill</span><span class="p">,</span>
@@ -4581,7 +5329,8 @@ Must be one of <code>'normal'</code> or <code>'italic'</code>. Defaults to "norm
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 982</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 981</span>
+<span class="normal"> 982</span>
 <span class="normal"> 983</span>
 <span class="normal"> 984</span>
 <span class="normal"> 985</span>
@@ -4754,8 +5503,7 @@ Must be one of <code>'normal'</code> or <code>'italic'</code>. Defaults to "norm
 <span class="normal">1152</span>
 <span class="normal">1153</span>
 <span class="normal">1154</span>
-<span class="normal">1155</span>
-<span class="normal">1156</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_line</span><span class="p">(</span>
+<span class="normal">1155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_line</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">value</span><span class="p">,</span>
         <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
@@ -4835,19 +5583,19 @@ Must be one of <code>'normal'</code> or <code>'italic'</code>. Defaults to "norm
 
         <span class="n">clean_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span>
 
-        <span class="k">if</span> <span class="n">math</span> <span class="o">==</span> <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="c1">#Media</span>
+        <span class="k">if</span> <span class="n">math</span> <span class="o">==</span> <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="c1">#Mean</span>
             <span class="n">line_value</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">clean_values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">clean_values</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean = </span><span class="si">{</span><span class="n">line_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">elif</span> <span class="n">math</span> <span class="o">==</span> <span class="s2">&quot;median&quot;</span><span class="p">:</span> <span class="c1">#Mediana</span>
+        <span class="k">elif</span> <span class="n">math</span> <span class="o">==</span> <span class="s2">&quot;median&quot;</span><span class="p">:</span> <span class="c1">#Median</span>
             <span class="n">line_value</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">clean_values</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Median = </span><span class="si">{</span><span class="n">line_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">elif</span> <span class="n">math</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="c1">#Minimo</span>
+        <span class="k">elif</span> <span class="n">math</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="c1">#Min</span>
             <span class="n">line_value</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">clean_values</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min = </span><span class="si">{</span><span class="n">line_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">elif</span> <span class="n">math</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="c1">#Massimo</span>
+        <span class="k">elif</span> <span class="n">math</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="c1">#Max</span>
             <span class="n">line_value</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">clean_values</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max = </span><span class="si">{</span><span class="n">line_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -5078,7 +5826,8 @@ Higher values increase render accuracy and image size. Defaults to 150.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>pynarrative/src/pynarrative/story.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2342</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">2341</span>
+<span class="normal">2342</span>
 <span class="normal">2343</span>
 <span class="normal">2344</span>
 <span class="normal">2345</span>
@@ -5316,8 +6065,7 @@ Higher values increase render accuracy and image size. Defaults to 150.</p>
 <span class="normal">2577</span>
 <span class="normal">2578</span>
 <span class="normal">2579</span>
-<span class="normal">2580</span>
-<span class="normal">2581</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ppi</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="normal">2580</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ppi</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Renders all elements, overlays, and structural layers of the story into a single compound chart.</span>
 
 <span class="sd">    Optionally exports the final visualization to a file in the `export/` directory in SVG,</span>
